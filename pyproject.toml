@@ -1,0 +1,38 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pinggy"
+version = "0.0.2"
+description = "Very initial version of pinggy python sdk"
+readme = "README.md"
+authors = [{ name = "Pinggy", email = "contact@pinggy.io" }]
+license = { file = "LICENSE.md" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["pinggy", "tunnel", "file_share"]
+dependencies = [
+    "paramiko >= 2.11.1",
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = []
+
+[project.urls]
+Homepage = "https://github.com/abhimp/pinggypython"
+
+[project.scripts]
+realpython = "pinggy.http:main"
+[tool.bumpver]
+current_version = "2023.1001-alpha"
+version_pattern = "YYYY.BUILD[-TAG]"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = true
