@@ -17,6 +17,10 @@ URL_REQUEST = "\r\n".join([ "GET /urls HTTP/1.0",
 
 class Connection():
     def __init__(self, token = None, mode=None, server="a.pinggy.io", port=443):
+        """
+            Connection initialization,
+            It takes argument and mode
+        """
         self.transport = None
         self.token = token
         self.mode = mode if mode in ["http", "tcp", "tls"] else ""
@@ -111,17 +115,14 @@ class Connection():
         try:
             while True:
                 dt = sock1.recv(2048)
-                # print(f"recv {len(dt)} from {sock1} to {sock2}")
                 if len(dt) == 0:
                     break
                 sock2.sendall(dt)
         finally:
-            # print(f"closing {sock1}, {sock2}")
             sock1.close()
             sock2.close()
 
     def _acceptLoop(self, serverAddr):
-        # print(f"waiting for connection at {self.transport}")
         while True:
             chan = self.transport.accept()
             if chan is None:

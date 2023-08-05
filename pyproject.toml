@@ -48,3 +48,6 @@ push = false
     "{version}",
 ]
 
+"src/pinggy/_version.py" = [
+    "{version}",
+]
